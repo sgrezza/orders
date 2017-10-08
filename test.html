@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <style>
+   .box{
+    width: 500px; height: 500px; border: 1px solid black;
+   }
+  </style>
+  <title>Document</title>
+</head>
+<body>
+  <div id="root">
+   <task-list></task-list>
+</body>
+<script src="js/vue.js"></script>
+<script src="js/main.js"></script>
+<!-- <script>
+var app = new Vue({
+  el: '#root',
+
+  data: {
+
+          tasks:[ 
+            {desc: 'Go to the bank', timeTaken = 34, completed: true},
+            {desc: 'Go to the store', timeTaken = 23, completed: true},
+            {desc: 'Go to the market', timeTaken = 14, completed: false},
+            {desc: 'Go home', timeTaken = 41, completed: false},
+          ]
+      },
+      computed: {
+        incompleteTasks() {
+          return this.tasks.filter (tasks => ! tasks.completed);
+        }
+      }
+  
+  
+});
+</script> -->
+</html>
