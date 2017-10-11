@@ -1,24 +1,54 @@
-Vue.component('task-list', {
+
+
+var app = new Vue({
+  el: '#root',
+  data: {
+    plate: [],
+    entrees: [
+      {
+        id: "ent0",
+        name: "Pulled Pork Sandwich",
+        description: "A championship-winning pulled pork sandwich made fresh on our smoker",
+        price: 6.99,
+        image: "pulled-pork.jpg"
+      },
+      {
+        id: "ent1",
+        name: "Brisket",
+        description: "A delicious melt-in-your-mouth brisket",
+        price: 11.99,
+        image: "brisket.jpg"
+      },
+      {
+        id: "ent2",
+        name: "Pork Butt",
+        description: "A mouth-watering pork-butt smoked to perfection",
+        price: 9.99,
+        image: "pork-butt.jpg"
+      },
+      {
+        id: "ent3",
+        name: "Ribs",
+        description: "A rack of ribs smoked overnight to championship-winning tenderness",
+        price: 13.99,
+        image: "ribs.jpg"
+      }
+    ]
+  },
   
-    template: '<div><task v-for="task in tasks">{{ task.task }}</task></div>',
-    
-    data() {
-      return {
-        tasks: [
-          {task: 'Go to the store', complete: true},
-          {task: 'Go to a play', complete: true},
-          {task: 'Go to the bank', complete: false},
-          {task: 'Go home', complete: true},
-        ]
+  methods: {
+    addItem: function(id) {
+      alert(subtotal);
+    },
+    computed:{
+      subtotal: function() {
+        var accum = 0;
+        for (var i=0; i<entrees.length; i++){
+          accum += entrees[i].price;
+          return accum;
+        }
       }
     }
-  });
 
-  Vue.component('task', {
-    
-      template: '<li><slot></slot></li>'
-    
-    });
-new Vue({
-  el: '#root'
+  }
 })
