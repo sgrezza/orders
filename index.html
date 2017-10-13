@@ -33,7 +33,7 @@
                       </div>
                 
                         <div>
-                            <div class="media" v-for="entree in entrees">
+                            <div class="media" v-for="(entree, index) in entrees">
                                 <img class="media-left image-class" :src="'images/' + entree.image">
                                 <div class="media-content"> 
                                     <h2 class="title is-size-3 is-size-3-touch">{{entree.name}}</h2>
@@ -41,17 +41,21 @@
                                 </div>
                                 <div class="media-right has-text-centered">
                                 <p class="title">$ {{entree.price}}</p>
-                                <button v-on:click="addItem(entree.price)" class="button is-warning">Add to Plate ></button>
+                                <button v-on:click="addItem(index)" class="button is-warning">Add to Plate ></button>
                                 </div>
                             </div>
                         </div>
-                     
+                        <div class="box">
+                            <div v-for="item in plate">
+                                <p>{{plate.name}}</p>
+                            </div>
+                        </div>
                       </div>
                   </div>
                     <div class="column is-one-third">
                       <div class="box">
                         <h2 class="title has-text-warning has-text-centered is-size-4-touch">Your Plate</h2>
-                        <table class="table">
+                        <!-- <table class="table">
                             <thead>
                                 <tr>
                                     <th>Qty.</th>
@@ -65,7 +69,10 @@
                                 </tr>
 
                             </tbody>
-                              </table>
+                              </table> -->
+                              <div v-for="item in plate">
+                                <p>{{plate.item}}</p>
+                            </div>
                             <div class="notification">
                                 <div class="columns is-mobile">
                                     <div class="column has-text-justified">

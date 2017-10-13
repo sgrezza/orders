@@ -35,10 +35,10 @@ var app = new Vue({
       }
     ]
   },
-  
+
   methods: {
     addItem: function(id) {
-      alert(subtotal);
+        this.plate.push(this.entrees[id]);
     },
     computed:{
       subtotal: function() {
