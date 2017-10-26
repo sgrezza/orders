@@ -1,54 +1,136 @@
-
-
+Vue.component("sides-menu", {
+  template: `<div>
+      <div class="media" v-for="(side, index) in sides">
+          <div class="media-content"> 
+              <h2 class="title is-size-3 is-size-3-touch">{{side.name}}</h2>
+              <p class="subtitle">{{side.description}}</p>
+          </div>
+          <div class="media-right has-text-centered">
+          <p class="title">$ {{side.price}}</p>
+          <button v-on:click="addSide(index)" class="button is-warning">Add to Plate ></button>
+          </div>
+      </div>
+  </div>`,
+  data() {
+    return {
+      sides: [
+      {
+        id: "side0",
+        name: "Cole Slaw",
+        description: "Some good 'ol cole slaw",
+        price: 3.99,
+        image: "pulled-pork.jpg"
+      },
+      {
+        id: "side1",
+        name: "Baked Beans",
+        description: "The family's baked bean recipe",
+        price: 3.99,
+        image: "brisket.jpg"
+      }
+    ]}
+  },
+  methods: {
+    addSide: function(id) {
+        app.plate.push(this.sides[id]);
+    }
+  }
+})
+Vue.component("entree-menu", {
+  template: `<div><div class="media" v-for="(entree, index) in entrees">
+  <img class="media-left image-class" :src="'images/' + entree.image">
+  <div class="media-content"> 
+      <h2 class="title is-size-3 is-size-3-touch">{{entree.name}}</h2>
+      <p class="subtitle">{{entree.description}}</p>
+  </div>
+  <div class="media-right has-text-centered">
+  <p class="title">$ {{entree.price}}</p>
+  <button v-on:click="addItem(index)" class="button is-warning">Add to Plate ></button>
+  </div>
+</div></div>`,
+  data() {
+    return {
+      entrees: [
+        {
+          id: "ent0",
+          name: "Pulled Pork Sandwich",
+          description: "A championship-winning pulled pork sandwich made fresh on our smoker",
+          price: 6.99,
+          image: "pulled-pork.jpg"
+        },
+        {
+          id: "ent1",
+          name: "Brisket",
+          description: "A delicious melt-in-your-mouth brisket",
+          price: 11.99,
+          image: "brisket.jpg"
+        },
+        {
+          id: "ent2",
+          name: "Pork Butt",
+          description: "A mouth-watering pork-butt smoked to perfection",
+          price: 9.99,
+          image: "pork-butt.jpg"
+        },
+        {
+          id: "ent3",
+          name: "Ribs",
+          description: "A rack of ribs smoked overnight to championship-winning tenderness",
+          price: 13.99,
+          image: "ribs.jpg"
+        }
+      ],
+    }
+  },
+  methods: {
+    addItem: function(id) {
+      app.plate.push(this.entrees[id]);
+    },
+  }
+})
 var app = new Vue({
   el: '#root',
   data: {
     plate: [],
-    entrees: [
-      {
-        id: "ent0",
-        name: "Pulled Pork Sandwich",
-        description: "A championship-winning pulled pork sandwich made fresh on our smoker",
-        price: 6.99,
-        image: "pulled-pork.jpg"
-      },
-      {
-        id: "ent1",
-        name: "Brisket",
-        description: "A delicious melt-in-your-mouth brisket",
-        price: 11.99,
-        image: "brisket.jpg"
-      },
-      {
-        id: "ent2",
-        name: "Pork Butt",
-        description: "A mouth-watering pork-butt smoked to perfection",
-        price: 9.99,
-        image: "pork-butt.jpg"
-      },
-      {
-        id: "ent3",
-        name: "Ribs",
-        description: "A rack of ribs smoked overnight to championship-winning tenderness",
-        price: 13.99,
-        image: "ribs.jpg"
-      }
-    ]
+    showEntrees: true,
+    showSides: false
   },
-
   methods: {
-    addItem: function(id) {
-        this.plate.push(this.entrees[id]);
+   
+   removeItem: function(id){
+    this.plate.pop(this.id);
     },
-    computed:{
-      subtotal: function() {
-        var accum = 0;
-        for (var i=0; i<entrees.length; i++){
-          accum += entrees[i].price;
-          return accum;
-        }
+    showMenu: function(menu){
+      switch(menu) {
+        case 'entrees':
+          this.showEntrees = true;
+          this.showSides = false;
+          break;
+        case 'sides':
+        this.showEntrees = false;
+        this.showSides = true;
       }
     }
-
-  }
+  },
+      computed:{
+        subtotal: function() {
+          var accum = 0;
+          for (var i=0; i<this.plate.length; i++){
+            accum += this.plate[i].price;
+          }
+          return accum;
+        },
+        totalTax: function() {
+          var tax =  (this.subtotal * 0.07); 
+          return tax;
+        },
+        grandTotal: function() {
+          var total = this.subtotal + this.totalTax;
+          return total;
+        }
+      }
 })
+document.addEventListener('DOMContentLoaded', function () {
+  FastClick.attach(document.body);
+}, false);
+
