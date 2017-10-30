@@ -16,7 +16,7 @@
             }
         </style>
     </head>
-    <body style="font-family: 'Yorkten Slab';" class="red">
+    <body style="font-family: 'yorktenslabnormregular';" class="red">
         <div class="container">
             <nav class="navbar red">
               <div class="navbar-brand">
@@ -40,7 +40,7 @@
                     <entree-menu v-if="showEntrees"></entree-menu>
                       
                       </div>
-                      <div class="column">
+                      <div class="column plate">
                         <div class="notification">
                           <h2 class="title has-text-warning has-text-centered is-size-4-touch">Your Plate</h2>
                                 <template v-for="item in plate" class="notification">
@@ -59,7 +59,6 @@
                                               <p class="subtitle is-spaced">Tax (0.7%)</p>
                                               <p class="title">Total</p>
                                       </div>
-                                     
                                       <div class="column has-text-right">
                                               <p class="subtitle">{{subtotal.toFixed(2)}}</p>
                                               <p class="subtitle is-spaced">{{totalTax.toFixed(2)}}</p>

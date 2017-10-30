@@ -1,3 +1,15 @@
 .red-background{
     background-color: #FF1300;
 }
+@font-face {
+    font-family: 'yorktenslabnormregular';
+    src: url('yorktenslabnormregular-webfont.woff2') format('woff2'),
+         url('yorktenslabnormregular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@media screen and (max-width: 768px) {
+    .plate{
+        display: none;
+    }
+}
