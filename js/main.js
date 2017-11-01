@@ -8,7 +8,7 @@ Vue.component("sides-menu", {
       </div><br>
       <div class="column is-3 has-text-right">
         <h2 class="title is-size-2">$ {{side.price}}</h2>
-        <button v-on:click="side(index)" class="button is-warning">Add to Plate</button>
+        <button v-on:click="addSide(index)" class="button is-warning">Add to Plate</button>
       </div>
       <hr>
      </div>
