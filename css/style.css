@@ -1,5 +1,12 @@
-.red-background{
+.red-background {
     background-color: #FF1300;
+}
+.image-class {
+    max-width: 100px;
+   max-height: 100px;
+}
+.red {
+    background: rgb(185, 27, 27);
 }
 @font-face {
     font-family: 'yorktenslabnormregular';
@@ -10,6 +17,13 @@
 }
 @media screen and (max-width: 768px) {
     .plate{
-        display: none;
+        /* position: absolute !important;
+        bottom: 0px;
+        width:100%;
+        z-index: 12; */
     }
+}
+.description{
+    word-wrap: break-word;
+    max-width: 20 em;
 }

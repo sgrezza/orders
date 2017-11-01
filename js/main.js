@@ -1,16 +1,18 @@
 Vue.component("sides-menu", {
   template: `<div>
-      <div class="media" v-for="(side, index) in sides">
-          <div class="media-content"> 
-              <h2 class="title is-size-3 is-size-3-touch">{{side.name}}</h2>
-              <p class="subtitle">{{side.description}}</p>
-          </div>
-          <div class="media-right has-text-centered">
-          <p class="title">$ {{side.price}}</p>
-          <button v-on:click="addSide(index)" class="button is-warning">Add to Plate ></button>
-          </div>
+  <div class="columns is-gapless" v-for="(side, index) in sides">
+      <img class="media-left image-class" >
+      <div class="column is-7">
+        <h2 class="title">{{side.name}}</h2>
+        <p class="subtitle ">{{side.description}}</p>
+      </div><br>
+      <div class="column is-3 has-text-right">
+        <h2 class="title is-size-2">$ {{side.price}}</h2>
+        <button v-on:click="side(index)" class="button is-warning">Add to Plate</button>
       </div>
-  </div>`,
+      <hr>
+     </div>
+</div>`,
   data() {
     return {
       sides: [
@@ -37,17 +39,20 @@ Vue.component("sides-menu", {
   }
 })
 Vue.component("entree-menu", {
-  template: `<div><div class="media" v-for="(entree, index) in entrees">
-  <img class="media-left image-class" :src="'images/' + entree.image">
-  <div class="media-content"> 
-      <h2 class="title is-size-3 is-size-3-touch">{{entree.name}}</h2>
-      <p class="subtitle">{{entree.description}}</p>
-  </div>
-  <div class="media-right has-text-centered">
-  <p class="title">$ {{entree.price}}</p>
-  <button v-on:click="addItem(index)" class="button is-warning">Add to Plate ></button>
-  </div>
-</div></div>`,
+  template: `<div>
+    <div class="columns is-gapless" v-for="(entree, index) in entrees">
+        <img class="media-left image-class" :src="'images/' + entree.image">
+        <div class="column is-7">
+          <h2 class="title">{{entree.name}}</h2>
+          <p class="subtitle ">{{entree.description}}</p>
+        </div><br>
+        <div class="column is-3 has-text-right">
+          <h2 class="title is-size-2">$ {{entree.price}}</h2>
+          <button v-on:click="addItem(index)" class="button is-warning">Add to Plate</button>
+        </div>
+        <hr>
+       </div>
+</div>`,
   data() {
     return {
       entrees: [

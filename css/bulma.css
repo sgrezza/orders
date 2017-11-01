@@ -7494,8 +7494,8 @@ label.panel-block:hover {
 }
 
 .tabs li.is-active a {
-  border-bottom-color: #00d1b2;
-  color: #00d1b2;
+  border-bottom-color: #d10000;
+  color: #d11c00;
 }
 
 .tabs ul {
