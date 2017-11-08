@@ -4,21 +4,21 @@
         <title>Orders</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="css/style.css" rel="stylesheet">
         <link href="css/bulma.css" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet">
       
     </head>
-    <body style="font-family: 'yorktenslabnormregular';" class="red">
+    <body style="font-family: 'yorktenslabnormregular';" class=" red">
         <div class="container">
-            <nav class="navbar red-background">
+            <nav class="navbar red">
               <div class="navbar-brand">
                   <a href="blank" class="navbar-item">
                       <img src="moon-icon.png"/>
                   </a>
               </div>
             </nav>
-            <div class="container" id="root">
-              <div class="notification"> 
+            <div class="container white" id="root">
+              <div class="section is-white"> 
                     <div class="tabs is-boxed">
                         <ul> 
                             <li class="" v-bind:class="{ 'is-active': showEntrees }">
@@ -32,38 +32,63 @@
                                 </a>
                             </li>
                         </ul>   
+                        
+                        <div class="cart-counter">4</div>  
+                        <button @click="togglePlate()"class="button is-pulled-right is-warning is-medium">
+
+                            <span class="icon">
+                                
+                                <img src="images/cart.png" />
+                            </span>
+                         </button>
+                        <p class="title">Total: $ {{grandTotal.toFixed(2)}}</p>
+                        
                     </div>
-                    <div class="columns">
-                            <entree-menu class="column is-8" v-if="showEntrees"></entree-menu>
-                            <sides-menu class="column is-8" v-if="showSides"></sides-menu>
-                              <div class="column is-4 box">
-                                  <h2 class="title has-text-warning has-text-centered is-size-4-touch">Your Plate</h2>
-                                        <template v-for="item in plate" class="notification">
-                                          <div class="level is-mobile">
-                                              <div class="level-left">
-                                                  <button @click="removeItem(item.id)" class="delete"></button>
-                                                  <h2 class="subtitle is-4 has-text-left">{{item.name}}</h2>
-                                              </div>
-                                              <div class="level-right"><p class="subtitle is-size-3 has-text-right">{{item.price}}</p></div>
-                                          </div>
-                                      </template>
-                                      <div class="notification">
-                                          <div class="columns is-mobile">
-                                              <div class="column has-text-justified">
-                                                      <p class="subtitle is-spaced">Subtotal</p>
-                                                      <p class="subtitle is-spaced">Tax (0.7%)</p>
-                                                      <p class="title">Total</p>
-                                              </div>
-                                              <div class="column has-text-right">
-                                                      <p class="subtitle">{{subtotal.toFixed(2)}}</p>
-                                                      <p class="subtitle is-spaced">{{totalTax.toFixed(2)}}</p>
-                                                      <p class="title">{{grandTotal.toFixed(2)}}</p>
-                                              </div>
-                                          </div>  
-                                      </div>
-                                   <div class="has-text-centered"><button class="button is-large is-warning">Place Order</button></div> 
-                              </div>
-                    </div>
+                        <entree-menu  v-if="showEntrees"></entree-menu>
+                        <sides-menu  v-if="showSides"></sides-menu>
+                        <transition name="fade">
+                                <div v-if="showPlate" class="modal" >
+                                    <div class="modal-background"></div>
+                                    <div class="modal-card">
+                                        <header class="modal-card-head">
+                                            <h2 class="modal-card-title has-text-warning has-text-centered is-size-4-touch">Your Plate</h2>
+                                            <button @click="togglePlate()"class="delete" aria-label="close"></button>
+                                        </header>
+                                        <div class="modal-card-body">
+                                            <template v-for="item in plate">
+                                                <div class="level is-mobile">
+                                                    <div class="level-left">
+                                                        <button @click="removeItem(item.id)" class="delete"></button>
+                                                        <h2 class="subtitle is-4 has-text-left">{{item.name}}</h2>
+                                                    </div>
+                                                    <div class="level-right"><p class="subtitle is-size-3 has-text-right">{{item.price}}</p></div>
+                                                </div>
+                                            </template>
+                                        </div>
+                                        <div class="total-box">
+                                            <div class="columns is-mobile">
+                                                <div class="column">
+                                                    <p class="subtitle is-spaced">Subtotal</p>
+                                                    <p class="subtitle is-spaced">Tax (0.7%)</p>
+                                                    <p class="title">Total</p>
+                                                </div>
+                                                <div class="column has-text-right">
+                                                    <p class="subtitle">{{subtotal.toFixed(2)}}</p>
+                                                    <p class="subtitle is-spaced">{{totalTax.toFixed(2)}}</p>
+                                                    <p class="title">{{grandTotal.toFixed(2)}}</p>
+                                                </div>
+                                            </div> 
+                                            <div class=" has-text-centered">
+                                                <button class="button is-large is-warning">Place Order</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                                    
+                                        
+                                    </div>
+                        </transition>
+                            
+                   
                     
                   </div>
                 </div>

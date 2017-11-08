@@ -1,12 +1,12 @@
 Vue.component("sides-menu", {
   template: `<div>
-  <div class="columns is-gapless" v-for="(side, index) in sides">
+  <div class="columns" v-for="(side, index) in sides">
       <img class="media-left image-class" >
-      <div class="column is-7">
+      <div class="column">
         <h2 class="title">{{side.name}}</h2>
         <p class="subtitle ">{{side.description}}</p>
       </div><br>
-      <div class="column is-3 has-text-right">
+      <div class="column has-text-right">
         <h2 class="title is-size-2">$ {{side.price}}</h2>
         <button v-on:click="addSide(index)" class="button is-warning">Add to Plate</button>
       </div>
@@ -40,13 +40,13 @@ Vue.component("sides-menu", {
 })
 Vue.component("entree-menu", {
   template: `<div>
-    <div class="columns is-gapless" v-for="(entree, index) in entrees">
+    <div class="columns" v-for="(entree, index) in entrees">
         <img class="media-left image-class" :src="'images/' + entree.image">
-        <div class="column is-7">
+        <div class="column">
           <h2 class="title">{{entree.name}}</h2>
           <p class="subtitle ">{{entree.description}}</p>
         </div><br>
-        <div class="column is-3 has-text-right">
+        <div class="column has-text-right">
           <h2 class="title is-size-2">$ {{entree.price}}</h2>
           <button v-on:click="addItem(index)" class="button is-warning">Add to Plate</button>
         </div>
@@ -58,7 +58,7 @@ Vue.component("entree-menu", {
       entrees: [
         {
           id: "ent0",
-          name: "Pulled Pork Sandwich",
+          name: "Bull Pork Sandwich",
           description: "A championship-winning pulled pork sandwich made fresh on our smoker",
           price: 6.99,
           image: "pulled-pork.jpg"
@@ -98,10 +98,10 @@ var app = new Vue({
   data: {
     plate: [],
     showEntrees: true,
-    showSides: false
+    showSides: false,
+    showPlate: false
   },
   methods: {
-   
    removeItem: function(id){
     this.plate.pop(this.id);
     },
@@ -115,6 +115,9 @@ var app = new Vue({
         this.showEntrees = false;
         this.showSides = true;
       }
+    },
+    togglePlate: function(){
+      this.showPlate = !this.showPlate;
     }
   },
       computed:{

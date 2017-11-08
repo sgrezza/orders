@@ -6,7 +6,7 @@
    max-height: 100px;
 }
 .red {
-    background: rgb(185, 27, 27);
+    background-color: rgb(185, 27, 27);
 }
 @font-face {
     font-family: 'yorktenslabnormregular';
@@ -15,15 +15,46 @@
     font-weight: normal;
     font-style: normal;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1215px) {
     .plate{
-        /* position: absolute !important;
+        position: fixed !important;
         bottom: 0px;
-        width:100%;
-        z-index: 12; */
+   
+        width: 100%;
     }
 }
 .description{
     word-wrap: break-word;
     max-width: 20 em;
+}
+.fade-enter-active, .fade-leave-active {
+    transition: opacity .5s
+  }
+  .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+    opacity: 0
+  }
+  .modal-card{
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    /* bring your own prefixes */
+    transform: translate(-50%, -50%) !important;
+  }
+  .total-box{
+    background-color: whitesmoke;
+    padding: 20px;
+    position: relative;
+    border-radius: 0px 0px 5px 5px;
+  }
+  .white{
+      background: #efefef
+  }
+  .cart-counter{
+        
+      background: #ffd83d;
+      border: 1px solid transparent;
+      border-radius: 1997px;
+      max-height: fit-content;      /* position: absolute; */
+      width: 20px;
+      text-align: center;
 }
