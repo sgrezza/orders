@@ -50,11 +50,11 @@
       background: #efefef
   }
   .cart-counter{
-        
       background: #ffd83d;
       border: 1px solid transparent;
       border-radius: 1997px;
       max-height: fit-content;      /* position: absolute; */
       width: 20px;
       text-align: center;
+      margin-right: -6px;
 }

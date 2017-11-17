@@ -135,8 +135,13 @@ var app = new Vue({
         grandTotal: function() {
           var total = this.subtotal + this.totalTax;
           return total;
+        },
+        plateCount: function() {
+          return this.plate.length;
         }
       }
+
+      
 })
 document.addEventListener('DOMContentLoaded', function () {
   FastClick.attach(document.body);
