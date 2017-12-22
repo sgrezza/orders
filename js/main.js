@@ -53,6 +53,7 @@ Vue.component("entree-menu", {
         <hr>
        </div>
 </div>`,
+
   data() {
     return {
       entrees: [
@@ -118,6 +119,15 @@ var app = new Vue({
     },
     togglePlate: function(){
       this.showPlate = !this.showPlate;
+    },
+    placeOrder: function(){
+      var order = JSON.stringify(this.plate);
+      // console.log(order);
+      var request = new XMLHttpRequest();
+      request.open("POST", "/php/sendorder.php", true);
+      request.setRequestHeader("Content-Type", "application/json");
+      request.send(order);
+
     }
   },
       computed:{
@@ -139,9 +149,7 @@ var app = new Vue({
         plateCount: function() {
           return this.plate.length;
         }
-      }
-
-      
+      }     
 })
 document.addEventListener('DOMContentLoaded', function () {
   FastClick.attach(document.body);

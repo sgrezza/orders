@@ -1,4 +1,5 @@
 <?php 
+error_reporting(E_ALL);
 $db_host = '45.56.100.209';
 $db_port = '3306';
 $db_user = 'spencer';
