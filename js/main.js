@@ -124,7 +124,7 @@ var app = new Vue({
       var order = JSON.stringify(this.plate);
       // console.log(order);
       var request = new XMLHttpRequest();
-      request.open("POST", "/php/sendorder.php", true);
+      request.open("POST", "php/sendorder.php", true);
       request.setRequestHeader("Content-Type", "application/json");
       request.send(order);
 

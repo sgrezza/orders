@@ -16,6 +16,17 @@
                   </a>
               </div>
             </nav>
+            <form action="php/sendorder.php" method="POST">
+                <script
+                  src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                  data-key="pk_test_CqzpaGthLuEeKjLTFV0qaBNq"
+                  data-amount="2000"
+                  data-name="Demo Site"
+                  data-description="We sell meat 'n stuff"
+                  data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                  data-locale="auto">
+                </script>
+                </form>
             <div class="container white" id="root">
               <div class="section is-white"> 
                     <div class="tabs is-boxed">
