@@ -127,7 +127,6 @@ var app = new Vue({
       request.open("POST", "php/sendorder.php", true);
       request.setRequestHeader("Content-Type", "application/json");
       request.send(order);
-
     }
   },
       computed:{

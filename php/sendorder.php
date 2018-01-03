@@ -1,12 +1,25 @@
 <?php
-
 require 'config.php';
+require_once('vendor/autoload.php');
+
 // $order = file_get_contents('php://input');
 $file = 'orders.txt';
 // file_put_contents($file, $order);
 
-$stripeToken = $_POST['stripeToken'];
-$stripeEmail = $_POST['stripeEmail'];
-echo ($stripeToken + $stripeEmail);
 
+// Set your secret key: remember to change this to your live secret key in production
+// See your keys here: https://dashboard.stripe.com/account/apikeys
+\Stripe\Stripe::setApiKey("sk_test_5OCrEAyrQ8Oljc0ddfjxteDO");
+
+// Token is created using Checkout or Elements!
+// Get the payment token ID submitted by the form:
+$token = $_POST['stripeToken'];
+
+// Charge the user's card:
+$charge = \Stripe\Charge::create(array(
+  "amount" => 1000,
+  "currency" => "usd",
+  "description" => "Example charge",
+  "source" => $token,
+));
 ?>
