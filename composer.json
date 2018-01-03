@@ -1,0 +1,12 @@
+{
+    "name": "spencer/orders",
+    "require": {
+        "stripe/stripe-php": "^5.8"
+    },
+    "authors": [
+        {
+            "name": "Spethreeker",
+            "email": "sallegrezz@gmail.com"
+        }
+    ]
+}
