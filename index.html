@@ -87,7 +87,7 @@
                                                 <div class="column has-text-right">
                                                     <p class="subtitle">{{subtotal.toFixed(2)}}</p>
                                                     <p class="subtitle is-spaced">{{totalTax.toFixed(2)}}</p>
-                                                    <p class="title">{{grandTotal.toFixed(2)}}</p>
+                                                    <p class="title">{{grandTotal}}</p>
                                                 </div>
                                             </div> 
                                             <div class=" has-text-centered">
@@ -126,7 +126,7 @@
           handler.open({
             name: 'Demo Site',
             description: '2 widgets',
-            amount: 2000
+            amount: app.grandTotal.toFixed(2) * 100
           });
           e.preventDefault();
         });
